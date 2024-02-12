@@ -1,26 +1,59 @@
 {
-  "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
+    "compilerOptions": {
+      "jsx": "preserve",
+      "baseUrl": ".", // This must be specified if "paths" is.
+      "paths": {
+        "@/*": [
+          "./*"
+        ]
+      },
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
+      ],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "strict": false,
+      "noEmit": true,
+      "incremental": true,
+      "esModuleInterop": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "downlevelIteration": true,
+      "isolatedModules": true,
+      "plugins": [
+        {
+          "name": "next"
+        }
+      ],
+      "strictNullChecks": true,
+      "target": "es2017",
+      "forceConsistentCasingInFileNames": true,
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "alwaysStrict": true,
+      "noUnusedLocals": true,
+      "outDir": "dist",
+      "sourceMap": true,
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false,
+      "exactOptionalPropertyTypes": false,
+      "noImplicitOverride": true,
+      "noFallthroughCasesInSwitch": true,
+      "noUnusedParameters": true,
+      "pretty": true,
+      "declaration": true
+    },
+    "include": [
+      "next-env.d.ts",
+      ".next/types/**/*.ts",
+      "**/*.ts",
+      "**/*.tsx"
     ],
-    "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
-}
+    "exclude": [
+      "node_modules"
+    ]
+  }
+  
