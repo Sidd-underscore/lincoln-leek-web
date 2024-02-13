@@ -1,13 +1,14 @@
 import { cn } from "@/lib/utils";
-import { Link as NextLink } from "next/link";
+import { default as NextLink } from "next/link";
 
-export function Link({ className, href }) {
+export function Link({ className, href, children, ...props }) {
   return (
     <NextLink
       className={cn("border-b border-emerald-500 border-2", className)}
       href={href}
+      {...props}
     >
-      Submit an article
+      {children}
     </NextLink>
   );
 }
