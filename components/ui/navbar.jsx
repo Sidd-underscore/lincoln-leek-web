@@ -9,25 +9,7 @@ export function Navbar() {
     <div>
       <div>
         <div>
-          {theme === "light" ? (
-            <Image
-              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
-              src="/brand/leek-banner-light.png"
-              alt="the Leek logo"
-              priority
-              width={354}
-              height={781.5}
-            />
-          ) : (
-            <Image
-              className="dark:drop-shadow-[0_0_0.3rem_#ffffff70]"
-              src="/brand/leek-banner-dark.png"
-              alt="the Leek logo"
-              priority
-              width={354}
-              height={781.5}
-            />
-          )}
+          
         </div>
       </div>
     </div>

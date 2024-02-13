@@ -58,7 +58,6 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <body>
-        {" "}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
