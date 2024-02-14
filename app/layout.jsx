@@ -3,19 +3,19 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/ui/navbar";
 
-export const geist = localFont({
+const geist = localFont({
   src: "../public/fonts/Geist-Regular.woff2",
   display: "swap",
   variable: "--font-sans",
 });
 
-export const geistMono = localFont({
+const geistMono = localFont({
   src: "../public/fonts/GeistMono-Regular.woff2",
   display: "swap",
   variable: "--font-mono",
 });
 
-export const dmSerifDisplay = localFont({
+const dmSerifDisplay = localFont({
   src: [
     {
       path: "../public/fonts/DMSerifDisplay-Regular.ttf",
