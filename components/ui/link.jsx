@@ -4,7 +4,7 @@ import { default as NextLink } from "next/link";
 export function Link({ className, href, children, ...props }) {
   return (
     <NextLink
-      className={cn("border-b border-emerald-500 border-2", className)}
+      className={cn("hover:border-b focus:border-b-2 text-emerald-500 hover:border-emerald-500 border-transparent transition-all focus:border-emerald-500", className)}
       href={href}
       {...props}
     >

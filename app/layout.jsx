@@ -3,16 +3,33 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/ui/navbar";
 
-const geist = localFont({
+export const geist = localFont({
   src: "../public/fonts/Geist-Regular.woff2",
   display: "swap",
-  variable: "--font-regular",
+  variable: "--font-sans",
 });
 
-const geistMono = localFont({
+export const geistMono = localFont({
   src: "../public/fonts/GeistMono-Regular.woff2",
   display: "swap",
   variable: "--font-mono",
+});
+
+export const dmSerifDisplay = localFont({
+  src: [
+    {
+      path: "../public/fonts/DMSerifDisplay-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DMSerifDisplay-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  display: "swap",
+  variable: "--font-heading",
 });
 
 export const metadata = {
@@ -53,11 +70,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
+      className={
+        geist.variable +
+        " " +
+        geistMono.variable +
+        " " +
+        dmSerifDisplay.variable
+      }
       lang="en"
-      className={`${geist.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
-      <body>
+      <body className="font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
