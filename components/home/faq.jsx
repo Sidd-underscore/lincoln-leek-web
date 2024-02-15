@@ -42,6 +42,22 @@ const qs = [
       </span>
     ),
   },
+  {
+    question: (
+      <span>
+        Why is it named <span className="italic font-heading">the Leek</span>?
+      </span>
+    ),
+    answer: (
+      <span>
+        Our newspaper is inspired by{" "}
+        <Link href="https://www.theonion.com/">
+          The Onion (America&apos;s Finest News Source)
+        </Link>
+        , so we stuck with the veggy idea.
+      </span>
+    ),
+  },
 ];
 
 export function FAQ() {
