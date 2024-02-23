@@ -16,15 +16,18 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import { submitArticleToSlack } from "@/lib/server-fetch";
 
 const formSchema = z.object({
-  link: z.string().url({ message: "Please enter a link! Links include 'https://'" }),
+  link: z
+    .string()
+    .url({ message: "Please enter a link! Links include 'https://'" }),
   email: z.string().email({ message: "Please enter a valid email!" }),
   studentID: z.string().min(6, { message: "Please enter a valid Student ID!" }),
   anonymous: z.boolean().default(true),
 });
 
-export function SubmitArticleForm({slackURL}) {
+export function SubmitArticleForm({ slackURL }) {
   // 1. Define your form.
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -38,26 +41,18 @@ export function SubmitArticleForm({slackURL}) {
 
   // 2. Define a submit handler.
   function onSubmit(values) {
-    fetch(
-      slackURL,
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          text:
-            "Wakey wakey people! A new article wants to be submitted. \n\n Here is the link: " +
-            values.link +
-            "\n Email: " +
-            values.email +
-            "\n Student ID: " +
-            values.studentID +
-            "\n Submit anonymously: " +
-            values.anonymous,
-        }),
-      },
+    submitArticleToSlack(
+      JSON.stringify({
+        text:
+          "Wakey wakey people! A new article wants to be submitted. \n\n Here is the link: " +
+          values.link +
+          "\n Email: " +
+          values.email +
+          "\n Student ID: " +
+          values.studentID +
+          "\n Submit anonymously: " +
+          values.anonymous,
+      }),
     );
     console.log(values);
   }
