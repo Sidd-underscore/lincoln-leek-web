@@ -1,5 +1,6 @@
 import { Link } from "@/components/ui/link";
 import { SubmitArticleForm } from "@/components/submit/form";
+import { Footer } from "@/components/ui/footer";
 
 export const metadata= {
     title: "Submit an article"
@@ -18,6 +19,8 @@ export default function SubmitPage() {
           <SubmitArticleForm slackURL={process.env.SLACK_URL}/>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

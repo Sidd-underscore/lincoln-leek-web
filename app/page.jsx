@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Link } from "@/components/ui/link";
+import { Footer } from "@/components/ui/footer";
 import { FAQ } from "@/components/home/faq";
 
 export default function Home() {
@@ -33,23 +33,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="absolute bottom-4  mx-auto text-center flex flex-row space-x-4">
-        <div>
-          <Link href="/about">About us</Link>
-        </div>
-
-        <div>
-          <Link href="/articles">View articles</Link>
-        </div>
-
-        <div>
-          <Link href="/submit">Submit an article</Link>
-        </div>
-
-        <div>
-          <Link href="/brand">Brand</Link>
-        </div>
-      </div>
+      <Footer />
     </main>
   );
 }
