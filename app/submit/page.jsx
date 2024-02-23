@@ -15,7 +15,7 @@ export default function SubmitPage() {
             Ready to get heard? Make sure you article follows the{" "}
             <Link href="/guidelines">guidelines!</Link>
           </p>
-          <SubmitArticleForm />
+          <SubmitArticleForm slackURL={process.env.SLACK_URL}/>
         </div>
       </div>
     </>

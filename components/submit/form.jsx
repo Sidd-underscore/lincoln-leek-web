@@ -24,7 +24,7 @@ const formSchema = z.object({
   anonymous: z.boolean().default(true),
 });
 
-export function SubmitArticleForm() {
+export function SubmitArticleForm({slackURL}) {
   // 1. Define your form.
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -39,7 +39,7 @@ export function SubmitArticleForm() {
   // 2. Define a submit handler.
   function onSubmit(values) {
     fetch(
-      "https://hooks.slack.com/services/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",
+      slackURL,
       {
         method: "POST",
         mode: "no-cors",
