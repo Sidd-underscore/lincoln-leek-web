@@ -1,6 +1,10 @@
 import { Link } from "@/components/ui/link";
 import { SubmitArticleForm } from "@/components/submit/form";
 
+export const metadata= {
+    title: "Submit an article"
+}
+
 export default function SubmitPage() {
   return (
     <>
