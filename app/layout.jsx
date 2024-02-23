@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/ui/navbar";
+import { Toaster } from "@/components/ui/toaster"
 
 const geist = localFont({
   src: "../public/fonts/Geist-Regular.woff2",
@@ -89,6 +90,7 @@ export default function RootLayout({ children }) {
         >
           <Navbar />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

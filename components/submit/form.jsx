@@ -17,6 +17,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { submitArticleToSlack } from "@/lib/server-fetch";
+import { Loading } from "@/components/ui/loading";
+import { useToast } from "@/components/ui/use-toast";
+
+import { useState } from "react";
 
 const formSchema = z.object({
   link: z
@@ -28,6 +32,9 @@ const formSchema = z.object({
 });
 
 export function SubmitArticleForm({ slackURL }) {
+  const [button, setButton] = useState({ text: "Submit", disabled: false });
+  const { toast } = useToast();
+
   // 1. Define your form.
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -41,6 +48,15 @@ export function SubmitArticleForm({ slackURL }) {
 
   // 2. Define a submit handler.
   function onSubmit(values) {
+    setButton({
+      text: (
+        <span className="flex items-center space-x-2">
+          <Loading />
+          <p>Submitting...</p>
+        </span>
+      ),
+      disabled: true,
+    });
     submitArticleToSlack(
       JSON.stringify({
         text:
@@ -53,8 +69,14 @@ export function SubmitArticleForm({ slackURL }) {
           "\n Submit anonymously: " +
           values.anonymous,
       }),
-    );
-    console.log(values);
+    ).then((e) => {
+      form.reset();
+      toast({
+        title: "Submitted!",
+        description: "Check your email! We'll contact you soon.",
+      });
+      setButton({ text: "Submit", disabled: false });
+    });
   }
 
   return (
@@ -140,7 +162,10 @@ export function SubmitArticleForm({ slackURL }) {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+
+        <Button type="submit" disabled={button.disabled}>
+          {button.text}
+        </Button>
       </form>
     </Form>
   );
