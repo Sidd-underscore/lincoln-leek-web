@@ -8,7 +8,7 @@ export const metadata = {
   title: "Brand",
 };
 
-export const brand = {
+const brand = {
   colors: {
     emerald: [
       {
