@@ -1,15 +1,21 @@
 import Image from "next/image";
-import { Footer } from "@/components/ui/footer";
 import { FAQ } from "@/components/home/faq";
+import { Spotlight } from "@/components/ui/spotlight";
 
 export default function Home() {
   return (
-    <main className="flex relative items-center justify-center p-24 min-h-screen">
-      <div className="flex relative items-center justify-center space-x-20 w-full">
-        <div className="w-1/3">
+    <div className="p-4 md:p-16 w-[calc(100vw_-_16px)] max-w-7xl">
+      <div className="min-w-full dark:bg-grid-white/[0.2] bg-grid-stone-950/[0.2] relative -mt-16 flex min-h-screen items-center justify-center space-x-0">
+        <div className="max-w-7xl w-full pointer-events-none absolute inset-0 flex items-center justify-start md:justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_0%,rgb(12_10_9))] dark:bg-stone-950" />
+
+        <Spotlight
+          className="-top-0 left-0 md:top-24 md:left-16"
+        />
+
+        <div className="max-w-xl z-10">
           <h1 className="text-6xl">
             Welcome to{" "}
-            <span className="font-heading font-bold italic text-7xl">
+            <span className="font-heading text-7xl font-bold italic">
               the Lincoln Leek
             </span>
           </h1>
@@ -18,22 +24,11 @@ export default function Home() {
             anyone to be heard by all.
           </p>
         </div>
-
-        <Image
-          alt="the Leek logo"
-          className="aspect-square flex justify-center h-auto w-auto max-h-[40vh]"
-          src="/brand/leek-logo-main.png"
-          width={0}
-          height={0}
-          sizes="100vw"
-        />
-
-        <div className="max-w-1/3 w-1/3">
-          <FAQ />
-        </div>
       </div>
 
-      <Footer />
-    </main>
+      <div className="w-full text-left">
+        <FAQ />
+      </div>
+    </div>
   );
 }

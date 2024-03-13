@@ -31,7 +31,7 @@ const formSchema = z.object({
   anonymous: z.boolean().default(true),
 });
 
-export function SubmitArticleForm({ slackURL }) {
+export function SubmitArticleForm({  }) {
   const [button, setButton] = useState({ text: "Submit", disabled: false });
   const { toast } = useToast();
 

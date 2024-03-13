@@ -2,7 +2,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/ui/navbar";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
+import { Footer } from "@/components/ui/footer";
 
 const geist = localFont({
   src: "../public/fonts/Geist-Regular.woff2",
@@ -81,7 +82,7 @@ export default function RootLayout({ children }) {
       lang="en"
       suppressHydrationWarning
     >
-      <body className="font-sans">
+      <body className="bg-white font-sans dark:bg-stone-950">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -89,8 +90,11 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <Navbar />
-          {children}
+          <div className="flex w-full justify-center">
+            <main className="max-w-7xl">{children}</main>
+          </div>
           <Toaster />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
