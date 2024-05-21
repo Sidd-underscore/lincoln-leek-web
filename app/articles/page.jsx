@@ -6,20 +6,16 @@ export const metadata = {
 };
 
 export default function ArticlesPage() {
+
+
   return (
     <div className="w-full">
-      <h1 className="italic font-heading">Articles</h1>
-      <p className="-mt-6">
-        Browse our collection of <span className="font-mono">754 432</span>{" "}
-        articles.
-      </p>
-
-      <div className="mt-12 w-full">
-        <div>
-          <SearchBar />
-        </div>
-        <ArticlesList />
+      <h1 className="font-heading italic">Articles</h1>
+      <div className="-mt-10">
+        <SearchBar />
       </div>
+
+      <ArticlesList />
     </div>
   );
 }

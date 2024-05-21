@@ -1,8 +1,15 @@
 import { Footer } from "@/components/ui/footer";
-import { Link } from "@/components/ui/link";
 import { ModeToggle } from "@/components/ui/theme-switcher";
 import { DownloadIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {Fonts} from '../../components/brand/fonts';
 
 export const metadata = {
   title: "Brand",
@@ -181,9 +188,10 @@ const brand = {
 };
 
 export default function SubmitPage() {
+
   return (
     <>
-      <div className="prose prose-stone mt-24 flex max-w-none justify-center p-12 dark:prose-invert xl:prose-xl prose-h1:text-7xl">
+      <div className="prose prose-stone mt-24 flex max-w-none justify-center p-6 dark:prose-invert xl:prose-xl prose-h1:text-7xl md:p-12">
         <div>
           <h1 className="font-heading italic">Our Brand</h1>
           <p>
@@ -200,7 +208,7 @@ export default function SubmitPage() {
                 <div className="mt-3 grid max-w-screen-sm grid-cols-2 grid-rows-1 gap-6">
                   {Object.entries(brand.images.logos).flatMap(
                     ([key, value]) => (
-                      <div>
+                      <div key={key}>
                         <strong className="capitalize">{key}</strong>
 
                         <div className="flex w-full cursor-text items-center gap-x-3 sm:block sm:space-y-1.5">
@@ -329,59 +337,8 @@ export default function SubmitPage() {
             </div>
 
             <div>
-              <h2>Fonts</h2>
 
-              {Object.entries(brand.images.fonts).flatMap(([key, value]) => (
-                <div key={JSON.stringify(value)} className="mb-6">
-                  <strong className="mb-4 capitalize">
-                    {value.name} - {value.fontName}
-                  </strong>
-
-                  <div
-                    className={`flex w-full cursor-text items-center gap-x-3 sm:block sm:space-y-1.5 ${value.className}`}
-                  >
-                    <h1 className="!m-0">{value.fontName}</h1>
-                    <h2>{value.fontName}</h2>
-                    <h3>{value.fontName}</h3>
-                    <strong>{value.fontName}</strong>
-                    <br /> <i>{value.fontName}</i>
-                    <p>{value.fontName}</p>
-                  </div>
-
-                  <a href={value.link} className="mt-4" target="_blank">
-                    More info on this font
-                  </a>
-
-                  {Object.entries(value.src).flatMap(([key, value]) => (
-                    <p
-                      key={JSON.stringify(value)}
-                      className="flex items-center"
-                    >
-                      <DownloadIcon className="mr-2 h-6 w-6" /> Download {key}{" "}
-                      font:{" "}
-                      {value.ttf && (
-                        <a href={value.ttf} className="mx-2 " download>
-                          TTF
-                        </a>
-                      )}
-                      {value.otf && (
-                        <a href={value.otf} className="mx-2 " download>
-                          OTF
-                        </a>
-                      )}
-                      {value.woff2 && (
-                        <>
-                          {" "}
-                          or
-                          <a href={value.woff2} className="mx-2 " download>
-                            WOFF2
-                          </a>
-                        </>
-                      )}
-                    </p>
-                  ))}
-                </div>
-              ))}
+              <Fonts fonts={brand.images.fonts} />
             </div>
           </div>
         </div>

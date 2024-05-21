@@ -1,0 +1,9 @@
+{
+  "title": "The Second Test",
+  "date": 1710393212516,
+  "content": "Computer monitors are essential peripherals that display the output from a computer’s graphics card, providing a visual interface for users. They come in various sizes and resolutions, with larger, high-definition screens offering a more immersive experience. Modern monitors often feature technologies like LED backlighting and IPS panels, which enhance color accuracy and viewing angles. For professionals in fields such as graphic design and video editing, monitors with precise color calibration and high refresh rates are crucial. Additionally, ergonomic features like adjustable stands and blue light filters help reduce eye strain during extended use.",
+    "author": {
+        "name": "Sidd",
+        "id": "sidd"
+    }
+}

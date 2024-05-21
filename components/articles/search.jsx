@@ -6,7 +6,7 @@ export function SearchBar() {
       <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <MagnifyingGlassIcon />
       </div>
-      <Input className="ps-10 w-full" placeholder="2023 California monkey" />
+      <Input className="ps-10 w-full" placeholder="Search date, title, author, content, ..." />
     </div>
   );
 }
