@@ -93,12 +93,9 @@ export function Fonts({ fonts }) {
 
           <div className="mb-6">
             <div
-              className={`flex w-full cursor-text items-center gap-x-3 sm:block sm:space-y-1.5 ${selectedFont.className}`}
+              className={`flex w-full cursor-text items-center gap-x-3 sm:block sm:space-y-1.5 `}
             >
-              <p className="my-2" style={{ fontSize: fontSize[0] }}>
-                {selectedFont.fontName}
-              </p>
-            </div>
+              <Input className={"h-auto bg-neutral-100 dark:bg-neutral-900 rounded-md py-2 px-4 my-2 " + selectedFont.className} style={{ fontSize: fontSize[0] }} placeholder={selectedFont.fontName}  defaultValue={selectedFont.fontName} />            </div>
 
             {Object.entries(selectedFont.src).flatMap(([key, value]) => (
               <p
@@ -130,7 +127,7 @@ export function Fonts({ fonts }) {
 
             <a
               href={selectedFont.link}
-              className="mt-4 text-sm"
+              className="mt-4 text-sm text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition"
               target="_blank"
             >
               More info on this font
