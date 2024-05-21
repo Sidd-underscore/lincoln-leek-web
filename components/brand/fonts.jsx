@@ -62,7 +62,7 @@ export function Fonts({ fonts }) {
               <SelectContent>
                 {Object.entries(fonts).flatMap(([key, value]) => {
                   return (
-                    <SelectItem value={key}>
+                    <SelectItem key={key} value={value}>
                       {value.name} - {value.fontName}
                     </SelectItem>
                   );
