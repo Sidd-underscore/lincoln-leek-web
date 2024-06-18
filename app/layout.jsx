@@ -82,7 +82,7 @@ export default function RootLayout({ children }) {
       lang="en"
       suppressHydrationWarning
     >
-      <body className="bg-white font-sans dark:bg-stone-950">
+      <body className="bg-white font-sans dark:bg-stone-900">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

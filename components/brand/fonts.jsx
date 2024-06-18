@@ -1,6 +1,10 @@
 "use client";
 
-import { DownloadIcon } from "@radix-ui/react-icons";
+import {
+  DownloadIcon,
+  FontBoldIcon,
+  FontItalicIcon,
+} from "@radix-ui/react-icons";
 import { useEffect, useRef, useState } from "react";
 import {
   Select,
@@ -11,12 +15,17 @@ import {
 } from "../ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 export function Fonts({ fonts }) {
   const [selectedFont, setSelectedFont] = useState();
+  const [fontProperties, setFontProperties] = useState({
+    size: 18,
+    bold: false,
+    italic: false,
+  });
 
   const [lastChanged, setLastChanged] = useState();
-  const [fontSize, setFontSize] = useState([18]);
 
   const input = useRef(null);
 
@@ -35,18 +44,22 @@ export function Fonts({ fonts }) {
       if (input.current) {
         const newValue = Number(input.current.value);
 
-        if (7 < newValue && newValue < 97) setFontSize([newValue]);
+        if (7 < newValue && newValue < 97) {
+          var old = { ...fontProperties };
+          old.size = newValue;
+          setFontProperties(old);
+        }
       }
     }, 1); // TODO: find a better solution to this
 
     return () => clearTimeout(delayDebounceFn);
-  }, [lastChanged]);
+  }, [lastChanged, fontProperties]);
 
   useEffect(() => {
     if (input.current) {
-      input.current.value = fontSize[0];
+      input.current.value = fontProperties.size ? fontProperties.size : 18;
     }
-  }, [fontSize]);
+  }, [fontProperties.size]);
 
   return (
     <div>
@@ -54,7 +67,7 @@ export function Fonts({ fonts }) {
 
       {selectedFont ? (
         <div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             <Select onValueChange={setSelectedFont} value={selectedFont}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select font" />
@@ -70,23 +83,59 @@ export function Fonts({ fonts }) {
               </SelectContent>
             </Select>
 
+            <Button
+              variant={fontProperties.bold ? "default" : "outline"}
+              onClick={() => {
+                var oldValue = { ...fontProperties };
+
+                oldValue.bold
+                  ? (oldValue.bold = false)
+                  : (oldValue.bold = true);
+
+                setFontProperties(oldValue);
+              }}
+              className="aspect-square h-9 w-9 p-1 rounded-md"
+            >
+              <FontBoldIcon />
+            </Button>
+
+            <Button
+              variant={fontProperties.italic ? "default" : "outline"}
+              className="aspect-square h-9 w-9 p-1 rounded-md"
+              onClick={() => {
+                var oldValue = { ...fontProperties };
+
+                oldValue.italic
+                  ? (oldValue.italic = false)
+                  : (oldValue.italic = true);
+
+                setFontProperties(oldValue);
+              }}
+            >
+              <FontItalicIcon />
+            </Button>
+
             <div className="flex w-full items-center space-x-2">
               <Input
-                defaultValue={fontSize[0]}
+                defaultValue={fontProperties.size ? fontProperties.size : 18}
                 type="number"
                 min={8}
                 max={96}
                 ref={input}
                 className="w-16 text-center"
-                onChange={(e) => setLastChanged(Date.now())}
+                onChange={() => setLastChanged(Date.now())}
               />
               <Slider
-                value={fontSize}
+                value={[fontProperties.size]}
                 className="w-full"
                 max={96}
                 min={8}
                 step={1}
-                onValueChange={setFontSize}
+                onValueChange={(newValue) => {
+                  var old = { ...fontProperties };
+                  old.size = newValue;
+                  setFontProperties(old);
+                }}
               />
             </div>
           </div>
@@ -95,7 +144,20 @@ export function Fonts({ fonts }) {
             <div
               className={`flex w-full cursor-text items-center gap-x-3 sm:block sm:space-y-1.5 `}
             >
-              <Input className={"h-auto bg-neutral-100 dark:bg-neutral-900 rounded-md py-2 px-4 my-2 " + selectedFont.className} style={{ fontSize: fontSize[0] }} placeholder={selectedFont.fontName}  defaultValue={selectedFont.fontName} />            </div>
+              <Input
+                className={
+                  "my-2 h-auto rounded-md px-4 py-2" +
+                  selectedFont.className
+                }
+                style={{
+                  fontSize: fontProperties.size ? fontProperties.size : 18,
+                  fontWeight: fontProperties.bold ? "bold" : "normal",
+                  fontStyle: fontProperties.italic ? "italic" : "normal",
+                }}
+                placeholder={selectedFont.fontName}
+                defaultValue={selectedFont.fontName}
+              />{" "}
+            </div>
 
             {Object.entries(selectedFont.src).flatMap(([key, value]) => (
               <p
@@ -127,7 +189,7 @@ export function Fonts({ fonts }) {
 
             <a
               href={selectedFont.link}
-              className="mt-4 text-sm text-stone-400 hover:text-stone-900 dark:hover:text-stone-50 transition"
+              className="mt-4 text-sm text-stone-400 transition hover:text-stone-900 dark:hover:text-stone-50"
               target="_blank"
             >
               More info on this font

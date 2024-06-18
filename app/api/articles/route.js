@@ -1,4 +1,4 @@
-import { compileArticlesByDate } from "@/articles/directory";
+import { compileArticlesByDate } from "@/lib/directory";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {

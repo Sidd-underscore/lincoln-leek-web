@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {Fonts} from '../../components/brand/fonts';
+import { Fonts } from "../../components/brand/fonts";
 
 export const metadata = {
   title: "Brand",
@@ -188,7 +188,6 @@ const brand = {
 };
 
 export default function SubmitPage() {
-
   return (
     <>
       <div className="prose prose-stone mt-24 flex max-w-none justify-center p-6 dark:prose-invert xl:prose-xl prose-h1:text-7xl md:p-12">
@@ -202,80 +201,87 @@ export default function SubmitPage() {
           <div className="p-2">
             <div>
               <h2>Images</h2>
-
-              <div className="mt-4 2xl:contents">
-                <h3 className="2xl:col-end-1 2xl:pt-2.5">Logos</h3>
-                <div className="mt-3 grid max-w-screen-sm grid-cols-2 grid-rows-1 gap-6">
-                  {Object.entries(brand.images.logos).flatMap(
-                    ([key, value]) => (
-                      <div key={key}>
-                        <strong className="capitalize">{key}</strong>
-
-                        <div className="flex w-full cursor-text items-center gap-x-3 sm:block sm:space-y-1.5">
-                          <Image
-                            src={value.png}
-                            alt={`${key} Logo`}
-                            width={500}
-                            height={500}
-                            className="rounded-full shadow-sm ring-1 ring-inset ring-stone-950/10 dark:ring-white/10"
-                          />
-                        </div>
-
-                        <p className="flex items-center">
-                          <DownloadIcon className="mr-2 h-6 w-6" /> Download:{" "}
-                          <a href={value.svg} className="mx-2 " download>
-                            SVG
-                          </a>
-                          or
-                          <a href={value.png} className="mx-2 " download>
-                            PNG
-                          </a>
-                        </p>
-                      </div>
-                    ),
-                  )}
-                </div>
-              </div>
-
-              <div className="mt-4 2xl:contents">
-                <div className="className=2xl:col-end-1 2xl:pt-2.5">
-                  <h3>Banners</h3>
+              <div className="lg:flex lg:space-x-14">
+               
+                <div className="lg:w-1/2">
+                 <div>
+                  <h3>Logos</h3>
+              
                   <p className="flex items-center text-base">
-                    Switch this page between light and dark mode to view both
-                    images in their dedicated environment.{" "}
-                    <ModeToggle className="ml-2" />
-                  </p>
+                      Use the favicon as an image with less detail for smaller areas, and the regular logo... everywhere else. Or don't. The world is your oyster!{" "}
+                    </p>
+                    </div>
+                  <div className="mt-3 grid max-w-screen-sm grid-cols-2 grid-rows-1 gap-6">
+                    {Object.entries(brand.images.logos).flatMap(
+                      ([key, value]) => (
+                        <div key={key}>
+                          <strong className="capitalize">{key}</strong>
+
+                          <div className="flex w-full cursor-text items-center gap-x-3 sm:block sm:space-y-1.5">
+                            <Image
+                              src={value.png}
+                              alt={`${key} Logo`}
+                              width={500}
+                              height={500}
+                              className="rounded-full !w-[1/2] h-auto shadow-sm ring-1 ring-inset ring-stone-950/10 dark:ring-white/10"
+                            />
+                          </div>
+
+                          <p className="flex items-center">
+                            <DownloadIcon className="mr-2 h-6 w-6 shrink-0" /> Download:{" "}
+                            <a href={value.svg} className="mx-2 " download>
+                              SVG
+                            </a>
+                            or
+                            <a href={value.png} className="mx-2 " download>
+                              PNG
+                            </a>
+                          </p>
+                        </div>
+                      ),
+                    )}
+                  </div>
                 </div>
 
-                <div className="mt-3 grid max-w-screen-sm grid-cols-2 grid-rows-1 gap-6">
-                  {Object.entries(brand.images.banners).flatMap(
-                    ([key, value]) => (
-                      <div key={value}>
-                        <strong className="capitalize">For {key} mode</strong>
+                <div className="lg:w-1/2">
+                  <div> 
+                    <h3>Banners</h3>
 
-                        <div className="flex w-full cursor-text items-center gap-x-3 rounded-md bg-gradient-to-br sm:block sm:space-y-1.5">
-                          <Image
-                            src={value}
-                            alt={`${key} Logo`}
-                            className="rounded-md shadow-sm ring-1 ring-inset ring-stone-950/10 dark:ring-white/10"
-                            width={500}
-                            height={500}
-                          />
+                    <p className="flex items-center text-base">
+                      Switch this page between light and dark mode to view both
+                      images in their dedicated environment.{" "}
+                      <ModeToggle className="ml-2" />
+                    </p>
+                    </div>
+                  <div className="mt-3 grid max-w-screen-sm grid-cols-2 grid-rows-1 gap-6">
+                    {Object.entries(brand.images.banners).flatMap(
+                      ([key, value]) => (
+                        <div key={value}>
+                          <strong className="capitalize">For {key} mode</strong>
+
+                          <div className="flex w-full cursor-text items-center gap-x-3 rounded-md bg-gradient-to-br sm:block sm:space-y-1.5">
+                            <Image
+                              src={value}
+                              alt={`${key} Logo`}
+                              className="rounded-md shadow-sm ring-1 ring-inset ring-stone-950/10 dark:ring-white/10"
+                              width={500}
+                              height={500}
+                            />
+                          </div>
+
+                          <p className="flex items-center">
+                            <DownloadIcon className="mr-2 h-6 w-6" /> Download:{" "}
+                            <a href={value} className="mx-2 " download>
+                              PNG
+                            </a>
+                          </p>
                         </div>
-
-                        <p className="flex items-center">
-                          <DownloadIcon className="mr-2 h-6 w-6" /> Download:{" "}
-                          <a href={value} className="mx-2 " download>
-                            PNG
-                          </a>
-                        </p>
-                      </div>
-                    ),
-                  )}
+                      ),
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-
             <div>
               <h2>Colors</h2>
 
@@ -337,7 +343,6 @@ export default function SubmitPage() {
             </div>
 
             <div>
-
               <Fonts fonts={brand.images.fonts} />
             </div>
           </div>

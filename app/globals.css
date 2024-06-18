@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+button button,
+h1 p,
+p p,
+a a {
+    background-color: red !important;
+}

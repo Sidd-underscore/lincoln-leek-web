@@ -6,8 +6,6 @@ export const metadata = {
 };
 
 export default function ArticlesPage() {
-
-
   return (
     <div className="w-full">
       <h1 className="font-heading italic">Articles</h1>

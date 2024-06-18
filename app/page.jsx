@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="p-4 md:p-16 w-[calc(100vw_-_16px)] max-w-7xl">
       <div className="min-w-full dark:bg-grid-white/[0.2] bg-grid-stone-950/[0.2] relative -mt-16 flex min-h-screen items-center justify-center space-x-0">
-        <div className="max-w-7xl w-full pointer-events-none absolute inset-0 flex items-center justify-start md:justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_0%,rgb(12_10_9))] dark:bg-stone-950" />
+        <div className="max-w-7xl w-full pointer-events-none absolute inset-0 flex items-center justify-start md:justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_0%,rgb(0_0_0))] dark:bg-stone-900" />
 
         <Spotlight
           className="-top-0 left-0 md:top-24 md:left-16"
